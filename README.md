@@ -2,7 +2,7 @@
 
 Code used to analyse and obtain the results in the paper: 
 
-Barranco-Altirriba M. et al. Guanine and pregnenolone sulfate are significantly associated with incident type 2 diabetes in two independent populations.
+Barranco-Altirriba M, Granado-Casas M, Yanes O, Capellades J, Junza A, Franch-Nadal J, Vendrell J, Llauradó G, Valdés S, García-Escobar E, Bermúdez-López M, Valdivielso JM, López-Lifante V-M, Herrero-Alonso C, Falguera M, Vilanova MB, Arteaga I, Torán-Monserrat P, Perera-Lluna A, Castelblanco E and Mauricio D (2025) Guanine and pregnenolone sulfate are associated with incident type 2 diabetes in two independent populations. Front. Endocrinol. 16:1706886. doi: 10.3389/fendo.2025.1706886
 
 The files should be executed in the following order:
 

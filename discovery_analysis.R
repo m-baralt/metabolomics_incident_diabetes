@@ -15,18 +15,18 @@ source("Functions_discovery.R")
 ################################################################################
 
 # data loading - positive ionization
-MS_pos <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_pos_results2023_filled.csv")
+MS_pos <- read.csv("data/DM_FIS2018_Hilic_pos_results2023_filled.csv")
 rownames(MS_pos) <- paste0("SOI", MS_pos$Qidx)
 MS_pos_t <- as.data.frame(t(MS_pos[,-c(1:9)]))
 MS_pos_t <- MS_pos_t[!(grepl(pattern = "Bi", rownames(MS_pos_t)) | grepl(pattern = "Bf", rownames(MS_pos_t))),]
 
 # data loading - injection order
-inj_order_pos <- read.csv("~/fis2018-s1/DidacMauricio_hilic_pos_injectionorder.csv")
+inj_order_pos <- read.csv("data/DidacMauricio_hilic_pos_injectionorder.csv")
 rownames(inj_order_pos) <- inj_order_pos$SampleName
 inj_order_pos <- inj_order_pos[,-1]
 
 # data loading - data base
-db <- read.csv("~/fis2018-s1/rebuilt_db_29052023.csv")
+db <- read.csv("data/rebuilt_db_29052023.csv")
 db <- db[,-1]
 rownames(db) <- db$ID.sample
 
@@ -1060,13 +1060,13 @@ write.csv(stats_results$Pvals.df, "results/discovery/R7_pos_none.csv")
 ################################################################################
 
 # data loading - positive ionization
-MS_neg <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_neg_results2023_filled.csv")
+MS_neg <- read.csv("data/DM_FIS2018_Hilic_neg_results2023_filled.csv")
 rownames(MS_neg) <- paste0("SOI", MS_neg$Qidx)
 MS_neg_t <- as.data.frame(t(MS_neg[,-c(1:9)]))
 MS_neg_t <- MS_neg_t[!(grepl(pattern = "Bi", rownames(MS_neg_t)) | grepl(pattern = "Bf", rownames(MS_neg_t))),]
 
 # data loading - injection order
-inj_order_neg <- read.csv("~/fis2018-s1/DidacMauricio_hilic_neg_injectionorder.csv")
+inj_order_neg <- read.csv("data/DidacMauricio_hilic_neg_injectionorder.csv")
 rownames(inj_order_neg) <- inj_order_neg$SampleName
 inj_order_neg <- inj_order_neg[,-1]
 

@@ -8,6 +8,8 @@ TAG="v1.0.0"
 DEST="data"
 
 mkdir -p "$DEST"
+mkdir -p "figures"
+mkdir -p "processed_files"
 
 echo "Fetching release asset list for $OWNER/$REPO $TAG..."
 

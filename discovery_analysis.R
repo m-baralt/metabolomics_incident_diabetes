@@ -6,7 +6,7 @@ library(RColorBrewer)
 library(ggplot2)
 library(qvalue)
 
-path <- "/home/maria/metabolomics_incident_diabetes/"
+path <- "" # Add the path to the repo
 setwd(path)
 source("Functions_discovery.R")
 

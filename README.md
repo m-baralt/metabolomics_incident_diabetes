@@ -15,9 +15,9 @@ chmod +x download_data.sh
 
 ## Code execution
 
-The files should be executed in the following order:
+The R scripts should be executed in the following order. Make sure to update any paths to your local repository as needed.
 
-* The `discovery_analysis.R` file contains the code to obtain the statistical results of the discovery stage.
+* `discovery_analysis.R` Performs the statistical analysis of the discovery stage. Update the repository path in the first lines of the script before running.
 
 * The `validation_analysis.R` file contains the code to obtain the statistical results of the validation stage.
 

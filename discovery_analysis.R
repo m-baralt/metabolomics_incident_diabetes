@@ -6,7 +6,7 @@ library(RColorBrewer)
 library(ggplot2)
 library(qvalue)
 
-path <- "/home/maria/Incident_type2_diabetes/"
+path <- "/home/maria/metabolomics_incident_diabetes/"
 setwd(path)
 source("Functions_discovery.R")
 

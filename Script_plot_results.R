@@ -135,10 +135,10 @@ loess_neg$correction <- "QC-RSC"
 table_pos_all_corrections <- rbind(cpca_pos,loess_pos,none_pos)
 table_neg_all_corrections <- rbind(cpca_neg, loess_neg, none_neg)
 
-MS_pos <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_pos_results2023_filled.csv")
+MS_pos <- read.csv("data/DM_FIS2018_Hilic_pos_results2023_filled.csv")
 rownames(MS_pos) <- paste0("SOI", MS_pos$Qidx)
 
-MS_neg <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_neg_results2023_filled.csv")
+MS_neg <- read.csv("data/DM_FIS2018_Hilic_neg_results2023_filled.csv")
 rownames(MS_neg) <- paste0("SOI", MS_neg$Qidx)
 
 pos_info <- MS_pos[,c(1:9)]
@@ -149,7 +149,7 @@ neg_info <- MS_neg[,c(1:9)]
 neg_info <- data.frame(Feature = rownames(neg_info), neg_info)
 merge_table_neg_all_corr <- merge(neg_info, table_neg_all_corrections, by = "Feature")
 
-cmp_validation <- readxl::read_excel("~/fis2018-s1/Compostos_validació_DM.xlsx")
+cmp_validation <- readxl::read_excel("data/Compostos_validació_DM.xlsx")
 cmp_validation <- cmp_validation[1:6,1:5]
 cmp_validation <- plyr::ldply(1:nrow(cmp_validation), function(i){
   dx <- cmp_validation[i,]
@@ -323,12 +323,12 @@ ggsave(association_plot,
        width = 16, height = 12, dpi = 900)
 
 
-db <- read.csv("~/FIS2018_subestudi1/Updated_db.csv", row.names = 1)
-matching_ids <- readxl::read_excel("~/FIS2018_subestudi1/match_ids.xlsx")
+db <- read.csv("data/Updated_db.csv", row.names = 1)
+matching_ids <- readxl::read_excel("data/match_ids.xlsx")
 colnames(matching_ids)[1] <- "subName"
 db <- merge(matching_ids[,-3], db, by = "CIP")
 
-object_data <- readRDS("~/FIS2018_subestudi1/Data_072024/all_batches_alldata.RDS")
+object_data <- readRDS("data/all_batches_alldata.RDS")
 corrected.data <- object_data$CorrectedData
 
 merge.df <- merge(db, corrected.data, by = "subName")
@@ -376,7 +376,7 @@ p_validation <- ggplot(mm_merge, aes(x = Sex, y = lm.model.residuals))+
   stat_compare_means(method = "t.test", label.y = 4, label.x = 1.35, size = 6, family = "Times New Roman") + ylim(-2.5, 4.2)
 
 
-discovery_neg_cpca <- read.csv("~/FIS2018_subestudi1/Data_072024/Negative_discovery_data_cpca.csv")
+discovery_neg_cpca <- read.csv("processed_files/cpca_processed_neg.csv")
 
 ## Pregnenolone sulfate is soi 1881
 discovery_neg_cpca$DM_INCIDENTE <- as.factor(discovery_neg_cpca$DM_INCIDENTE)

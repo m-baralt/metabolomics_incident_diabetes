@@ -5,7 +5,7 @@ rownames(processed_data) <- processed_data$X
 processed_features <- processed_data[,grepl(pattern = "SOI", x = colnames(processed_data))]
 processed_features <-  as.data.frame(t(processed_features))
 
-MS_pos <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_pos_results2023_filled.csv")
+MS_pos <- read.csv("data/DM_FIS2018_Hilic_pos_results2023_filled.csv")
 rownames(MS_pos) <- paste0("SOI", MS_pos$Qidx)
 
 merged_dat <- merge(MS_pos[,c("mass", "rtmed")], processed_features, by = 0)
@@ -85,7 +85,7 @@ rownames(processed_data) <- processed_data$X
 processed_features <- processed_data[,grepl(pattern = "SOI", x = colnames(processed_data))]
 processed_features <-  as.data.frame(t(processed_features))
 
-MS_neg <- read.csv("~/fis2018-s1/DM_FIS2018_Hilic_neg_results2023_filled.csv")
+MS_neg <- read.csv("data/DM_FIS2018_Hilic_neg_results2023_filled.csv")
 rownames(MS_neg) <- paste0("SOI", MS_neg$Qidx)
 
 merged_dat <- merge(MS_neg[,c("mass", "rtmed")], processed_features, by = 0)
@@ -154,7 +154,7 @@ Annotated.dataset <- list(Annotated.Tab = Annotated.Tab2,
                           Diff.Tab = Diff.Tab,
                           Ranked.Tab = Ranked.Tab)
 
-write.csv(Annotated.dataset$Ranked.Tab, "/home/maria/fis2018-s1/annotated_mwise_neg.csv")
+write.csv(Annotated.dataset$Ranked.Tab, "processed_files/annotated_mwise_neg.csv")
 
 ## Results for enrichment ##
 
@@ -200,11 +200,11 @@ cpca_neg <- plyr::ldply(files.neg.cpca, .inform = TRUE, function(f){
   
 })
 
-mwise_pos <- read.csv("/home/maria/fis2018-s1/annotated_mwise_pos.csv", row.names = 1)
+mwise_pos <- read.csv("processed_files/annotated_mwise_pos.csv", row.names = 1)
 colnames(mwise_pos)[2] <- "Feature"
 stats_cmps_pos <- merge(cpca_pos, mwise_pos, by = "Feature")
 
-mwise_neg <- read.csv("/home/maria/fis2018-s1/annotated_mwise_neg.csv", row.names = 1)
+mwise_neg <- read.csv("processed_files/annotated_mwise_neg.csv", row.names = 1)
 colnames(mwise_neg)[2] <- "Feature"
 stats_cmps_neg <- merge(cpca_neg, mwise_neg, by = "Feature")
 
@@ -319,7 +319,7 @@ statistical_analysis_lm <- function(df, feats.names, covars, outcome,
 
 
 ### Positive
-merge.pos.cpca <- read.csv("/home/maria/fis2018-s1/cpca_processed_pos.csv", row.names = 1)
+merge.pos.cpca <- read.csv("processed_files/cpca_processed_pos.csv", row.names = 1)
 covars <- c("Sex","Age","BMI","HT","HOMA_IR","Smoking",
             "Family_history_DM","Glucose",
             "seguimiento")
@@ -329,7 +329,7 @@ x$Sex <- as.numeric(as.factor(x$Sex))
 x$HT <- as.numeric(as.factor(x$HT))
 
 ### Negative
-merge.neg.cpca <- read.csv("/home/maria/fis2018-s1/cpca_processed_neg.csv", row.names = 1)
+merge.neg.cpca <- read.csv("processed_files/cpca_processed_neg.csv", row.names = 1)
 
 covars <- c("Sex","Age","BMI","HT","HOMA_IR","Smoking",
             "Family_history_DM","Glucose",

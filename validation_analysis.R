@@ -6,7 +6,7 @@ library(patchwork)
 library(pROC)
 library(caret)
 
-path <- "/home/maria/Incident_type2_diabetes/"
+path <- "/home/maria/metabolomics_incident_diabetes/"
 setwd(path)
 source("Functions_validation.R")
 
@@ -14,10 +14,10 @@ source("Functions_validation.R")
 ## Data processing ##
 #####################
 
-batch1_data <- read_prepare_data(path = "~/FIS2018_subestudi1/Data_072024/DM1_2024_export.rds")
-batch2_data <- read_prepare_data(path = "~/FIS2018_subestudi1/Data_072024/DM2_2024_export.rds")
-batch3_data <- read_prepare_data(path = "~/FIS2018_subestudi1/Data_072024/DM3_2024_export.rds")
-batch4_data <- read_prepare_data(path = "~/FIS2018_subestudi1/Data_072024/DM4_2024_export.rds")
+batch1_data <- read_prepare_data(path = "data/DM1_2024_export.rds")
+batch2_data <- read_prepare_data(path = "data/DM2_2024_export.rds")
+batch3_data <- read_prepare_data(path = "data/DM3_2024_export.rds")
+batch4_data <- read_prepare_data(path = "data/DM4_2024_export.rds")
 kableExtra::kable(batch1_data$compounds_info)
 kableExtra::kable(batch1_data$metabs_names, col.names = "Features names")
 
@@ -206,12 +206,12 @@ saveRDS(object_data, "processed_files/all_batches_alldata.RDS")
 ## Statistical Analysis ##
 ##########################
 
-db <- read.csv("~/FIS2018_subestudi1/Updated_db.csv", row.names = 1)
-matching_ids <- readxl::read_excel("~/FIS2018_subestudi1/match_ids.xlsx")
+db <- read.csv("data/Updated_db.csv", row.names = 1)
+matching_ids <- readxl::read_excel("data/match_ids.xlsx")
 colnames(matching_ids)[1] <- "subName"
 db <- merge(matching_ids[,-3], db, by = "CIP")
 
-object_data <- readRDS("~/FIS2018_subestudi1/Data_072024/all_batches_alldata.RDS")
+object_data <- readRDS("data/all_batches_alldata.RDS")
 corrected.data <- object_data$CorrectedData
 merge.df <- merge(db, corrected.data, by = "subName")
 merge.df <- merge.df[!(merge.df$FU_time<=0),]
@@ -302,7 +302,7 @@ stats_results_r6 <- data.frame(analysis = "R6", stats_results_r6)
 stats_results_glm <- rbind(stats_results_r1, stats_results_r2, stats_results_r4)
 stats_results_lm <- rbind(stats_results_r3, stats_results_r5, stats_results_r6)
 
-allinfo <- readRDS("~/FIS2018_subestudi1/Data_072024/DM1_2024_export.rds")
+allinfo <- readRDS("data/DM1_2024_export.rds")
 compounds_info <- allinfo[[2]] %>% as.data.frame()
 compounds_info$Metabolite <- paste("MZ",compounds_info$`m/z`,"MZ_135.1208", sep = "_")
 matching <- compounds_info[,c("Metabolite", "Compound")]

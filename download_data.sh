@@ -10,6 +10,8 @@ DEST="data"
 mkdir -p "$DEST"
 mkdir -p "figures"
 mkdir -p "processed_files"
+mkdir -p "results"
+mkdir -p "results/discovery"
 
 echo "Fetching release asset list for $OWNER/$REPO $TAG..."
 

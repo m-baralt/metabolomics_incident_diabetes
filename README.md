@@ -6,7 +6,13 @@ Barranco-Altirriba M, Granado-Casas M, Yanes O, Capellades J, Junza A, Franch-Na
 
 ## Data download
 
-After cloning this repository, run the following commands **from inside the repository directory** to download the dataset:
+Git clone this repository in your local folder using:
+
+```
+git clone https://github.com/m-baralt/metabolomics_incident_diabetes.git
+```
+
+After cloning, run the following commands **from inside the repository directory** to download the dataset:
 
 ```
 chmod +x download_data.sh

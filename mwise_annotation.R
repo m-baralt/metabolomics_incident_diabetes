@@ -1,4 +1,5 @@
 library(mWISE)
+library(ggplot2)
 
 processed_data <- read.csv("processed_files/cpca_processed_pos.csv")
 rownames(processed_data) <- processed_data$X

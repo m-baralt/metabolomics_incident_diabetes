@@ -153,7 +153,7 @@ neg_info <- MS_neg[,c(1:9)]
 neg_info <- data.frame(Feature = rownames(neg_info), neg_info)
 merge_table_neg_all_corr <- merge(neg_info, table_neg_all_corrections, by = "Feature")
 
-cmp_validation <- readxl::read_excel("data/Compostos_validació_DM.xlsx")
+cmp_validation <- readxl::read_excel("data/Compostos_validacio_DM.xlsx")
 cmp_validation <- cmp_validation[1:6,1:5]
 cmp_validation <- plyr::ldply(1:nrow(cmp_validation), function(i){
   dx <- cmp_validation[i,]

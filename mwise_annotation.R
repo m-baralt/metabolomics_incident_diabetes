@@ -312,7 +312,7 @@ statistical_analysis_lm <- function(df, feats.names, covars, outcome,
                               Significant_features_qvalue_trunc = sum(pvals_df$qvalue_trunc<psign),
                               Min_qvalue = min(pvals_df$qvalue),
                               Sign_p = psign)
-  p.hist <- ggplot(aes(x = pval), data = pvals_df) + geom_histogram()
+  p.hist <- ggplot2::ggplot(aes(x = pval), data = pvals_df) + geom_histogram()
   return(list(summary.stats = summary.stats,
               Pvals.df = pvals_df, p.hist = p.hist))
 }

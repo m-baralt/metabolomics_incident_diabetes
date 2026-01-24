@@ -3,6 +3,10 @@ library(tidyr)
 library(dplyr)
 library(kableExtra)
 library(magrittr)
+
+path <- "" # Add the path to the repo
+setwd(path)
+
 source("Functions_validation.R")
 
 files_results <- list.files("results/discovery/", full.names = TRUE)

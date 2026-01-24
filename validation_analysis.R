@@ -6,7 +6,7 @@ library(patchwork)
 library(pROC)
 library(caret)
 
-path <- "/home/maria/metabolomics_incident_diabetes/"
+path <- ""
 setwd(path)
 source("Functions_validation.R")
 
@@ -335,7 +335,7 @@ complete_folds <- plyr::llply(1:5, function(i){
 
 metrics_CV_alldata <- plyr::ldply(1:5, function(i){
   test_set <- complete_folds[[i]]
-  train_set <- ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
+  train_set <- plyr::ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
   
   class_weights <- ifelse(train_set$event.DM2 == 1, 
                           sum(train_set$event.DM2==0)/nrow(train_set), 
@@ -415,7 +415,7 @@ complete_folds <- plyr::llply(1:5, function(i){
 
 metrics_CV_only_pred <- plyr::ldply(1:5, function(i){
   test_set <- complete_folds[[i]]
-  train_set <- ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
+  train_set <- plyr::ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
   
   class_weights <- ifelse(train_set$event.DM2 == 1, 
                           sum(train_set$event.DM2==0)/nrow(train_set), 
@@ -496,7 +496,7 @@ complete_folds <- plyr::llply(1:5, function(i){
 
 metrics_CV_nopreds <- plyr::ldply(1:5, function(i){
   test_set <- complete_folds[[i]]
-  train_set <- ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
+  train_set <- plyr::ldply(seq(1,5)[!(seq(1,5) %in% i)], function(j) complete_folds[[j]])
   class_weights <- ifelse(train_set$event.DM2 == 1, 
                           sum(train_set$event.DM2==0)/nrow(train_set), 
                           sum(train_set$event.DM2==1)/nrow(train_set))
